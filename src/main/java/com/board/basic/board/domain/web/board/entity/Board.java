@@ -1,20 +1,26 @@
-package com.board.basic.board.domain.web.board.entity;
+package com.board.basic.board.domain.web.board.mapper;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import lombok.Data;
 
-@Entity
-@Table(name = "board")
+@Data
 public class Board {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long id;
 
-	// 게시판 제목
-	// 게시판 내용
-	// 게시판 작성자
+	private String title; // 게시판 제목
+	private String content;// 게시판 내용
+	private String name;// 게시판 작성자
+
+	public Board() {
+	}
+
+	public Board(Long id, String title, String content, String name) {
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.name = name;
+	}
+
+
 }
