@@ -18,23 +18,17 @@ public class WebConfiguration {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
-			.csrf(AbstractHttpConfigurer::disable)
-			.formLogin(Customizer.withDefaults())
-			.authorizeHttpRequests(authorizeRequest ->
-				authorizeRequest
-					.requestMatchers(
-						AntPathRequestMatcher.antMatcher("/swagger-ui/**/**"),
-						AntPathRequestMatcher.antMatcher("/basic/**"),
-						AntPathRequestMatcher.antMatcher("/v3/api-docs/**/**")
-					).permitAll()
-			)
-			.headers(
-				headersConfigurer ->
-					headersConfigurer
-						.frameOptions(
-							HeadersConfigurer.FrameOptionsConfig::sameOrigin
-						)
-			);
+				.csrf(AbstractHttpConfigurer::disable)
+				.formLogin(Customizer.withDefaults())
+				.authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
+						.requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
+				.headers(
+						headersConfigurer ->
+								headersConfigurer
+										.frameOptions(
+												HeadersConfigurer.FrameOptionsConfig::sameOrigin
+										)
+				);
 
 		return http.build();
 	}
@@ -42,11 +36,11 @@ public class WebConfiguration {
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
 		return (web ->
-			web
-				.ignoring()
-				.requestMatchers(
-					PathRequest.toStaticResources().atCommonLocations()
-				)
+				web
+						.ignoring()
+						.requestMatchers(
+								PathRequest.toStaticResources().atCommonLocations()
+						)
 		);
 	}
 }

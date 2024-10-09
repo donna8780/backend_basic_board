@@ -1,11 +1,9 @@
-package com.board.basic.board.domain.web.board.mapper;
+package com.board.basic.board.domain.web.board.entity;
 
 import lombok.Data;
 
 @Data
 public class Board {
-
-
 	private Long id;
 
 	private String title; // 게시판 제목
@@ -14,13 +12,10 @@ public class Board {
 
 	public Board() {
 	}
-
 	public Board(Long id, String title, String content, String name) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.name = name;
 	}
-
-
 }

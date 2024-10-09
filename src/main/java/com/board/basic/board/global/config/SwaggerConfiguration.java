@@ -1,4 +1,4 @@
-package com.board.basic.board.global.config;
+/*package com.board.basic.board.global.config;
 
 import org.springframework.context.annotation.Configuration;
 
@@ -18,4 +18,4 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 	}
 )
 public class SwaggerConfiguration {
-}
+}*/
